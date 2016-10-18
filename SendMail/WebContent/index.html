@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Envía un email</title>
+  <script src="code.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div>
+    <form action="Send" method="post">
+      <p>Cuenta de correo:
+        <input type="text" name="username" required>
+      </p>
+      <p>Contraseña:
+        <input type="password" name="password" required>
+      </p>
+      <p>Para:
+        <input type="text" name="to" required>
+      </p>
+      <p>Asunto:
+        <input type="text" name="subject" value="Sin asunto">
+      </p>
+      <p>Mensaje:</p>
+      <textarea name="content" rows="8" cols="40" required></textarea>
+      <input type="submit" name="submit" value="Enviar">
+    </form>
+  </div>
+</body>
+</html>
