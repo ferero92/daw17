@@ -1,0 +1,14 @@
+body {
+  width: 60%;
+  margin: 50px auto;
+}
+
+form > * {
+  padding: 10px;
+  margin: 10px;
+}
+
+textarea {
+  resize: none;
+  display: block;
+}

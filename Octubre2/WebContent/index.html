@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reservar Libro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>RESERVAR UN LIBRO</h1>
+  <form action="ReservaLibro" method="get">
+    <p>ALUMNO:
+      <input type="text" name="name" required>
+      SOCIO:
+      <input type="radio" name="partner" value="sí" checked>Sí
+      <input type="radio" name="partner" value="no">No
+    </p>
+    <p>MATERIA:
+      <select name="subject">
+        <option value="informática">Informática</option>
+        <option value="literatura">Literatura</option>
+        <option value="astronomía">Astronomía</option>
+        <option value="física">Física</option>
+        <option value="novelas">Novelas</option>
+      </select>
+    </p>
+    <p>GENERO
+      <input type="checkbox" name="gender" value="aventuras">Aventuras
+      <input type="checkbox" name="gender" value="humor">Humor
+      <input type="checkbox" name="gender" value="policíacas" checked="checked">Policíacas
+      <input type="checkbox" name="gender" value="terror">Terror
+      <input type="checkbox" name="gender" value="fantasía">Fantasía
+    </p>
+    <p>OBSERVACIONES</p>
+    <textarea name="obs" rows="8" cols="40"></textarea>
+    <input type="submit" name="submit" value="Grabar la Reserva">
+    <input type="reset" name="reset" value="Inicializar valores">
+  </form>
+</body>
+</html>
