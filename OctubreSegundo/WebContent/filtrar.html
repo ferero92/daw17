@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Filtrar</title>
+</head>
+<body>
+  <h1>Filtra por dispositivo</h1>
+  <form action="SelectWhere" method="post">
+    <input type="checkbox" name="dispositivos" value="CD">CD
+    <input type="checkbox" name="dispositivos" value="DVD">DVD
+    <input type="checkbox" name="dispositivos" value="BR">BR
+    <input type="checkbox" name="dispositivos" value="LP">LP
+    <input type="checkbox" name="dispositivos" value="Otro">Otro
+    <input type="submit" name="submit" value="Filtrar Dispositivos">
+  </form>
+  <form action="SelectGender" method="post">
+    <select name="genero">
+      <option value="pop">Pop</option>
+      <option value="rock">Rock</option>
+      <option value="clasica">Clásica</option>
+    </select>
+    <input type="submit" name="submit" value="Filtrar por género">
+  </form>
+</body>
+</html>

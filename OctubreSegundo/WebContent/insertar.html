@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Insertar</title>
+</head>
+<body>
+  <h1>ALTA TÍTULO MUSICAL</h1>
+  <form action="Insert" method="post">
+    <p>Grupo musical:<input type="text" name="grupo"></p>
+    <p>Título:<input type="text" name="titulo"></p>
+    <p>Género musical:
+      <select name="genero">
+        <option value="pop">Pop</option>
+        <option value="rock">Rock</option>
+        <option value="clasica">Clásica</option>
+      </select>
+    </p>
+    <p>Dispositivo:
+      <input type="radio" name="dispositivo" value="CD">CD
+      <input type="radio" name="dispositivo" value="DVD">DVD
+      <input type="radio" name="dispositivo" value="BR">BR
+      <input type="radio" name="dispositivo" value="LP">LP
+      <input type="radio" name="dispositivo" value="Otro">Otro
+    </p>
+    <p>Observaciones:</p>
+    <textarea name="obs" rows="8" cols="40">Sin observaciones</textarea>
+    <input type="submit" name="submit" value="Crear registro">
+  </form>
+</body>
+</html>
