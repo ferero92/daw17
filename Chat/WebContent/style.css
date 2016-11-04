@@ -1,0 +1,26 @@
+body {
+  height: 500px;
+}
+
+div {
+  height: 80%;
+  width: 80%;
+  margin: auto;
+}
+
+div * {
+  padding: 5px;
+}
+
+form {
+  width: 50%;
+  margin: auto;
+}
+
+iframe {
+  border: 1px solid #000;
+}
+
+#send input[type="text"] {
+  width: 85%;
+}
