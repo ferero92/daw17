@@ -52,7 +52,7 @@ public class Send extends HttpServlet {
 		array.add(message);
 		Update.setMessages(array);
 		
-		response.setHeader("refresh", "0;URL=general.html");
+		response.setHeader("refresh", "0;URL=index.html");
 		
 	}
 
