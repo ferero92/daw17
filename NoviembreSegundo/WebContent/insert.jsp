@@ -10,9 +10,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<sql:update dataSource="${ db }">
-		INSERT INTO Album VALUE(null, "Queen", "A night at the Opera", "rock", "CD", "")
+	<!--sql:update dataSource="${db}">
+		INSERT INTO Album VALUE(null, "Guns N' Roses", "Welcome to the jungle", "rock", "CD", "")
+	</sql:update-->
+	
+	<sql:update dataSource="${db}">
+		INSERT INTO Album VALUE(null, "${param.grupo}", "${param.titulo}", "${param.genero}", "${param.dispositivo}", "${param.obs}")
 	</sql:update>
+	<p>Álbum añadido con éxito</p>
 	<c:redirect url="index.html"></c:redirect>
 </body>
 </html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Modificar</title>
+</head>
+<body>
+  <h1>MODIFICAR EL VALOR DE UN CAMPO</h1>
+  <form action="Modify" method="post">
+    <p>Id del registro:<input type="text" name="id" required></p>
+    <select name="campo">
+      <option value="--">--Seleccione campo a modificar--</option>
+      <option value="grupo">Grupo</option>
+      <option value="titulo">Título</option>
+      <option value="genero">Género</option>
+      <option value="dispositivos">Dispositivos</option>
+      <option value="observaciones">Obervaciones</option>
+    </select>
+    <p>Nuevo valor del campo:<input type="text" name="value"></p>
+    <input type="submit" name="submit" value="Submit">
+  </form>
+</body>
+</html>
