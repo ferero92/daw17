@@ -58,10 +58,17 @@ public class Session extends HttpServlet {
 				if(result.isBeforeFirst()){
 					result.next();
 					
-					User user = new User(result.getInt("id"), result.getString("name"), result.getString("email"));
+					User user = new User(result.getInt("id"), result.getString("name"), result.getString("password"), result.getString("email"), result.getInt("state"));
 					
 					session.setAttribute("user", user);
-					response.setHeader("refresh", "0;clockin.jsp");
+					String redirect = "0;";
+					
+					if(user.getName().equals("admin"))
+						redirect += "admin.html";
+					else
+						redirect += "clockin.jsp";
+					
+					response.setHeader("refresh", redirect);
 				}
 				else{
 					out.println("Usuario no registrado");

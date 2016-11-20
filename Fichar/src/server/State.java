@@ -51,6 +51,9 @@ public class State extends HttpServlet {
 				PreparedStatement ps = query.preparedStatement(MyQuery.MODIFY);
 				ps.executeUpdate();
 				
+				user.setState(Integer.parseInt(action));
+				request.getSession().setAttribute("user", user);
+				
 				response.setHeader("refresh", "0;URL=clockin.jsp");
 			}
 			else
