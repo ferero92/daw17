@@ -15,7 +15,7 @@
 	<c:set var="user" value="<%= (User)session.getAttribute(\"user\") %>"></c:set>
 	<c:set var="now" value="<%= new java.util.Date() %>"></c:set>
 	<fmt:formatDate var="time" type="time" value="${now}"/>
-	<fmt:formatDate var="date" type="date" value="${now}"/>
+	<fmt:formatDate var="date" pattern="dd-MM-yyyy" value="${now}"/>
 	<c:forTokens items="${param.position}" delims="," begin="0" end="0" var="position">
 		<c:set var="latitude" value="${position}" scope="application"></c:set>
 	</c:forTokens>
@@ -29,5 +29,12 @@
 		UPDATE usuarios SET state = ${param.action} WHERE id = ${user.getId()}
 	</sql:update>
 	<jsp:setProperty property="state" name="user" value="${param.action}"/>
+	<sql:update>
+		INSERT INTO jornada VALUE(null, ${user.getId()}, ${time}, ${date}, ${latitude}, ${longitude})
+	</sql:update>
+	<p>Latitud: <c:out value="${latitude}"></c:out></p>
+	<p>Longitud: <c:out value="${longitude}"></c:out></p>
+	<p>Hora: <c:out value="${time}"></c:out></p>
+	<p>Fecha: <c:out value="${date}"></c:out></p>
 </body>
 </html>

@@ -43,12 +43,12 @@ public class Session extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		String name = request.getParameter("name");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
 		try {
 			MyConnect connect = new MyConnect(db);
-			String string = table + ":name:" + name + ":password:" + password;
+			String string = table + ":email:" + email + ":password:" + password;
 			
 			if(connect.isConnect()){
 				MyQuery query = new MyQuery(connect, string);
