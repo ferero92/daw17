@@ -1,0 +1,17 @@
+body {
+  background: rgb(208, 218, 218);
+  margin: 0px;
+  padding: 0px;
+}
+
+.center {
+  background: rgba(0, 9, 8, 0.2);
+  border: 1px solid #000;
+  margin: 10% auto;
+  padding: 2%;
+  width: 50%;
+}
+
+.center * {
+  display: inline;
+}

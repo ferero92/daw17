@@ -20,7 +20,7 @@ import mylib.db.*;
 @WebServlet("/Session")
 public class Session extends HttpServlet {
 	
-	String db = "//localhost:3306/fichar";
+	String db = "//localhost:3306/FICHAR";
 	String table = "usuarios";
 	
 	private static final long serialVersionUID = 1L;

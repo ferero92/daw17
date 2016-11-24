@@ -11,10 +11,10 @@
 <body>
 	<h1>Cambiar contraseña</h1>
   <form action="newpass.jsp" method="post">
-    <p>Contraseña actual:<input type="password" name="old" onblur="verify(<%= user.getPassword() %>)" required><span style="visibility: hidden;">Contraseña incorrecta</span></p>
-    <p>Nueva contraseña:<input type="password" name="password" required></p>
-    <p>Confirmar contraseña:<input type="password" name="confirm" onblur="confirmar()" required><span style="visibility: hidden;">Error al confirmar la contraseña</span></p>
-    <button type="submit" name="id" value="<%= user.getId() %>">Cambiar contraseña</button>
+    <p>Contraseña actual: <input type="password" name="old" onblur="verify(<%= user.getPassword() %>)" required><span style="visibility: hidden;">Contraseña incorrecta</span></p>
+    <p>Nueva contraseña: <input type="password" name="password" required></p>
+    <p>Confirmar contraseña: <input type="password" name="confirm" onblur="confirmar()" required><span style="visibility: hidden;">Error al confirmar la contraseña</span></p>
+    <button type="submit" name="id" value="${user.getId()}">Cambiar contraseña</button>
   </form>
 </body>
 </html>

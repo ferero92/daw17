@@ -52,7 +52,7 @@ function confirmar() {
 
 function position() {
 
-  navigator.geolocation.getCurrentPosition(success);
+  navigator.geolocation.getCurrentPosition(success, failure);
 }
 
 function success(location){
@@ -67,8 +67,21 @@ function success(location){
 	var map = document.getElementById('map');
 	var url = 'http://maps.google.com/maps/api/staticmap?center='
 		  	  + latitude + ',' + longitude +
-		  	  '&zoom=18&size=800x600&sensor=false&markers=' + latitude + ',' + longitude + 
+		  	  '&zoom=18&size=800x600&sensor=false&markers=' + latitude + ',' + longitude +
 		  	  '&key=AIzaSyAtz3Oc21yeJ13PTp0pyLWsykVHjhMmVtI';
-	
-	map.setAttribute('src', url);
+
+  map.setAttribute('src', url);
+  var caption = document.createElement('figcaption');
+  caption.innerHTML = 'Precisión de ' + accuracy + ' metros'
+  map.parentNode.appendChild(caption);
+}
+
+function failure(){
+
+	var latitude = 0;
+	var longitude = 0;
+	var accuracy = 0;
+
+	var input = document.getElementsByName('position')[0];
+	input.value = latitude + ',' + longitude + ',' + accuracy;
 }
