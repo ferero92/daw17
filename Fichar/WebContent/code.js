@@ -2,24 +2,29 @@ function active(number) {
 
   var buttons = document.getElementsByTagName('button');
 
+  for (var i = 0; i < buttons.length; i++) {
+    var string = buttons[i].className.substring(0,33);
+    buttons[i].className = string;
+  }
+
   switch (number) {
     case 0:
-      buttons[0].disabled = false;
-      buttons[1].disabled = true;
-      buttons[2].disabled = true;
-      buttons[3].disabled = true;
+      buttons[0].className += 'active';
+      buttons[1].className += 'disabled';
+      buttons[2].className += 'disabled';
+      buttons[3].className += 'disabled';
       break;
     case 1:
-      buttons[0].disabled = true;
-      buttons[1].disabled = false;
-      buttons[2].disabled = true;
-      buttons[3].disabled = false;
+      buttons[0].className += 'disabled';
+      buttons[1].className += 'active';
+      buttons[2].className += 'disabled';
+      buttons[3].className += 'active';
       break;
     case 2:
-      buttons[0].disabled = true;
-      buttons[1].disabled = true;
-      buttons[2].disabled = false;
-      buttons[3].disabled = true;
+      buttons[0].className += 'disabled';
+      buttons[1].className += 'disabled';
+      buttons[2].className += 'active';
+      buttons[3].className += 'disabled';
       break;
   }
 }
@@ -50,6 +55,22 @@ function confirmar() {
     document.getElementsByTagName('span')[1].style.visibility = "hidden";
 }
 
+function cambiotag(a) {
+
+	var li = document.getElementsByTagName('li');
+
+	for (var i = 0; i < li.length; i++) {
+	  li[i].className = '';
+	}
+
+	document.getElementById('Fichar').style.visibility = 'hidden';
+	document.getElementById('Historial').style.visibility = 'hidden';
+
+	document.getElementById(a.innerHTML).style.visibility = 'visible';
+	a.parentNode.className = 'active';
+
+}
+
 function position() {
 
   navigator.geolocation.getCurrentPosition(success, failure);
@@ -70,10 +91,10 @@ function success(location){
 		  	  '&zoom=18&size=800x600&sensor=false&markers=' + latitude + ',' + longitude +
 		  	  '&key=AIzaSyAtz3Oc21yeJ13PTp0pyLWsykVHjhMmVtI';
 
-  map.setAttribute('src', url);
-  var caption = document.createElement('figcaption');
+  map.setAttribute('href', url);
+  map.getElementsByTagName('img')[0].setAttribute('src', url);
+  var caption = document.getElementsByTagName('small')[0];
   caption.innerHTML = 'Precisión de ' + accuracy + ' metros'
-  map.parentNode.appendChild(caption);
 }
 
 function failure(){

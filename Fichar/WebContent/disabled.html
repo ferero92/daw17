@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<title>Deshabilitar</title>
+<link rel="stylesheet" href="bootstrap/bootstrap.min.css" media="screen" title="no title">
+<script src="bootstrap/jquery-3.1.1.min.js" charset="utf-8"></script>
+<script src="bootstrap/bootstrap.min.js" charset="utf-8"></script>
+<script src="code.js" charset="utf-8"></script>
 </head>
 <body>
-  <form action="newpass.jsp" method="post">
-    <p>Id del usuario para dar de baja: <input type="text" name="id" value=""></p>
-    <button type="submit" name="password" value="DISABLED">Deshabilitar</button>
-  </form>
+	<div class="container">
+		<div class="page-header">
+			<h2>Dar de baja un usuario</h2>
+		</div>
+		<form action="newpass.jsp" method="post" class="col-sm-offset-4 col-sm-4">
+			<div class="form-group">
+				<label for="id">Id del usuario a deshabilitar:</label>
+				<input type="text" name="id" value="" class="form-control">
+			</div>
+    		<button type="submit" name="password" value="DISABLED" class="btn btn-danger">Deshabilitar</button>
+  		</form>
+	</div>
 </body>
 </html>
