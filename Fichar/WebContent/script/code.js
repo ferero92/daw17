@@ -55,22 +55,6 @@ function confirmar() {
     document.getElementsByTagName('span')[1].style.visibility = "hidden";
 }
 
-function cambiotag(a) {
-
-	var li = document.getElementsByTagName('li');
-
-	for (var i = 0; i < li.length; i++) {
-	  li[i].className = '';
-	}
-
-	document.getElementById('Fichar').style.visibility = 'hidden';
-	document.getElementById('Historial').style.visibility = 'hidden';
-
-	document.getElementById(a.innerHTML).style.visibility = 'visible';
-	a.parentNode.className = 'active';
-
-}
-
 function position() {
 
   navigator.geolocation.getCurrentPosition(success, failure);

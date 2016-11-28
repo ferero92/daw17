@@ -7,14 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0">
 <title>Hola <c:out value="${user.getName()}"></c:out></title>
-<link rel="stylesheet" href="bootstrap/bootstrap.min.css" media="screen" title="no title">
-<script src="bootstrap/jquery-3.1.1.min.js" charset="utf-8"></script>
-<script src="bootstrap/bootstrap.min.js" charset="utf-8"></script>
-<script src="code.js" charset="utf-8"></script>
+<link rel="stylesheet" href="../bootstrap/bootstrap.min.css" media="screen" title="no title">
+<script src="../bootstrap/jquery-3.1.1.min.js" charset="utf-8"></script>
+<script src="../bootstrap/bootstrap.min.js" charset="utf-8"></script>
+<script src="../script/code.js" charset="utf-8"></script>
 </head>
 <body onload="active(${user.getState()}), position()">
 	<div class="container">
-		<p class="col-sm-offset-9"><a href="change.jsp">Cambiar contraseña</a> | <a href="index.html">Cerrar sesión</a></p>
+		<p class="col-sm-offset-9"><a href="change.jsp">Cambiar contraseña</a> | <a href="../index.jsp">Cerrar sesión</a></p>
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="clockin.jsp">Fichar</a></li>
 			<li><a href="historial.jsp">Historial</a></li>

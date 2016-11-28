@@ -6,23 +6,30 @@
 <%@ include file="connect.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0">
-<title>Hola <c:out value="${user.getName()}"></c:out></title>
-<link rel="stylesheet" href="bootstrap/bootstrap.min.css" media="screen" title="no title">
-<script src="bootstrap/jquery-3.1.1.min.js" charset="utf-8"></script>
-<script src="bootstrap/bootstrap.min.js" charset="utf-8"></script>
-<script src="code.js" charset="utf-8"></script>
+<title>Consultar actividad</title>
+<link rel="stylesheet" href="../bootstrap/bootstrap.min.css" media="screen" title="no title">
+<script src="../bootstrap/jquery-3.1.1.min.js" charset="utf-8"></script>
+<script src="../bootstrap/bootstrap.min.js" charset="utf-8"></script>
 </head>
-<body onload="position()">
+<body>
 	<div class="container">
-		<p class="col-sm-offset-9"><a href="change.jsp">Cambiar contraseña</a> | <a href="index.html">Cerrar sesión</a></p>
-		<ul class="nav nav-tabs">
-			<li><a href="clockin.jsp">Fichar</a></li>
-			<li class="active"><a href="historial.jsp">Historial</a></li>
-		</ul>
+		<p class="col-sm-offset-10">| <a href="admin.html">Panel de control</a></p> 
 		<br>
-		<form id="filter" action="historial.jsp" method="post" class="form-inline">
+		<sql:query var="usuarios" dataSource="${db}">
+			SELECT id, name FROM usuarios ORDER BY name
+		</sql:query>
+		<form action="select.jsp" method="post" class="form-inline">
 			<div class="form-group">
-				<label for="start">Fecha inicio:</label>
+				<label for="name">Nombre de empleado</label>
+				<select name="id" class="form-control">
+					<option value="">--Selecciona empleado--</option>
+					<c:forEach var="users" items="${usuarios.rows}" begin="1">
+						<option value="${users.id}">${users.name}</option>
+					</c:forEach>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="start">Fecha de inicio:</label>
 				<input type="date" name="start" class="form-control">
 			</div>
 			<div class="form-group">
@@ -32,18 +39,13 @@
 			<input type="submit" value="Filtrar" class="btn btn-primary">
 		</form>
 		<c:choose>
-			<c:when test="${empty param.start}">
-				<sql:query var="total" dataSource="${db}">
-					SELECT sec_to_time(SUM(time_to_sec(hours))) as 'total' 
-					FROM jornada 
-					WHERE user = ${user.getId()}
-				</sql:query>
-				
+			<c:when test="${empty param.id}">
 				<sql:query var="result" dataSource="${db}">
-					SELECT h.id, e.name, h.date, h.time, h.latitude, h.longitude
-					FROM historial h, estados e 
-					WHERE e.id = h.state AND h.user = ${user.getId()} 
-					ORDER BY h.id
+					SELECT h.id, u.name AS 'empleado', e.name, h.date, h.time, h.latitude, h.longitude
+					FROM historial h, usuarios u, estados e 
+					WHERE h.state = e.id
+					AND h.user = u.id 
+					ORDER BY h.id DESC
 				</sql:query>
 			</c:when>
 			<c:otherwise>
@@ -51,22 +53,23 @@
 					SELECT sec_to_time(SUM(time_to_sec(hours))) as 'total' 
 					FROM jornada 
 					WHERE date BETWEEN '${param.start}' AND '${param.end}'
-					AND user = ${user.getId()}
+					AND user = ${param.id}
 				</sql:query>
+				<br>
+				<c:forEach var="sum" items="${total.rows}">
+					<button class="btn btn-warning col-lg-offset-9">Total horas: ${sum.total}</button>
+				</c:forEach>
 				<sql:query var="result" dataSource="${db}">
-					SELECT h.id, e.name, h.date, h.time, h.latitude, h.longitude
-					FROM historial h, estados e 
+					SELECT h.id, u.name AS 'empleado', e.name, h.date, h.time, h.latitude, h.longitude
+					FROM historial h, usuarios u, estados e 
 					WHERE h.date BETWEEN '${param.start}' AND '${param.end}' 
-					AND h.user = ${user.getId()} 
-					AND h.state = e.id 
-					ORDER BY h.id
+					AND h.user = ${param.id} 
+					AND h.state = e.id
+					AND h.user = u.id 
+					ORDER BY h.id DESC
 				</sql:query>
 			</c:otherwise>
 		</c:choose>
-		<br>
-		<c:forEach var="sum" items="${total.rows}">
-			<button class="btn btn-warning col-lg-offset-9">Total horas: ${sum.total}</button>
-		</c:forEach>
 		<div class="panel-group col-lg-offset-1 col-lg-10" style="margin-top: 3%">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
@@ -79,14 +82,16 @@
 						<table class="table table-condensed">
 							<thead>
 								<tr>
-									<th>Acción</td>
-									<th>Hora</td>
-									<th>Fecha</td>
-									<th>Geolocalización</td>
+									<th>Empleado</th>
+									<th>Acción</th>
+									<th>Hora</th>
+									<th>Fecha</th>
+									<th>Geolocalización</th>
 								</tr>
 							</thead>
 							<c:forEach var="row" items="${result.rows}">
 								<tr>
+									<td>${row.empleado}</td>
 									<td>${row.name}</td>
 									<td>${row.time}</td>
 									<td>${row.date}</td>
@@ -101,7 +106,7 @@
 												</a>
 											</c:otherwise>
 										</c:choose>
-						  	  		</td>
+									</td>
 								</tr>
 							</c:forEach>
 						</table>

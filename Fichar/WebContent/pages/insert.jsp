@@ -7,10 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0">
 <title>Añadir usuario</title>
-<link rel="stylesheet" href="bootstrap/bootstrap.min.css" media="screen" title="no title">
-<script src="bootstrap/jquery-3.1.1.min.js" charset="utf-8"></script>
-<script src="bootstrap/bootstrap.min.js" charset="utf-8"></script>
-<script src="code.js" charset="utf-8"></script>
+<link rel="stylesheet" href="../bootstrap/bootstrap.min.css" media="screen" title="no title">
+<script src="../bootstrap/jquery-3.1.1.min.js" charset="utf-8"></script>
+<script src="../bootstrap/bootstrap.min.js" charset="utf-8"></script>
 </head>
 <body>
 	<c:choose>
