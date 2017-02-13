@@ -1,0 +1,50 @@
+body {
+	background: url("../images/background_green_cup.png");
+}
+
+header {
+	background: lightgreen;
+	color: white;
+	margin-top: 0px;
+	padding: 15px 0px;
+}
+
+section.container {
+	background: white;
+	margin-bottom: 35px;
+	margin-top: 0px;
+}
+
+form.form-inline {
+	margin-bottom: 25px;
+	margin-top: 25px;
+}
+
+div.btn-group {
+	margin-bottom: 25px;
+	margin-top: 25px;
+}
+
+div.alert {
+	text-align: center;
+}
+
+div.percentage {
+	background: #5cb85c;
+	color: white;
+	text-align: center;
+}
+
+button.btn-warning {
+	margin: 25px;
+}
+
+#votation {
+	color: black;
+	font-size: 15px;
+}
+
+#votation button {
+	margin: 25px;
+}
+
