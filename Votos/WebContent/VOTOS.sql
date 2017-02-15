@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 13-02-2017 a las 10:15:37
+-- Tiempo de generación: 15-02-2017 a las 12:19:33
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 7.0.9
 
@@ -16,12 +16,12 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-CREATE DATABASE VOTOS;
-USE VOTOS;
-
 --
 -- Base de datos: `VOTOS`
 --
+
+CREATE DATABASE VOTOS;
+USE VOTOS;
 
 -- --------------------------------------------------------
 
@@ -43,22 +43,22 @@ CREATE TABLE `candidates` (
 --
 
 INSERT INTO `candidates` (`id`, `first_name`, `last_name`, `votes`, `category`, `curse`) VALUES
-(1, 'Manuela', 'Gomez', 2, 1, '2016-2017'),
+(1, 'Manuela', 'Gomez', 0, 1, '2016-2017'),
 (3, 'Fernando', 'Rodriguez', 0, 2, '2016-2017'),
-(4, 'Jose', 'Martinez', 4, 1, '2016-2017'),
+(4, 'Jose', 'Martinez', 0, 1, '2016-2017'),
 (6, 'Roberta', 'Belgrado', 0, 3, '2016-2017'),
-(7, 'Marta', 'Garcia', 2, 1, '2016-2017'),
-(8, 'Manuel', 'Garrido', 2, 1, '2016-2017'),
-(9, 'Lucia', 'Alvarez', 1, 1, '2016-2017'),
+(7, 'Marta', 'Garcia', 0, 1, '2016-2017'),
+(8, 'Manuel', 'Garrido', 0, 1, '2016-2017'),
+(9, 'Lucia', 'Alvarez', 0, 1, '2016-2017'),
 (10, 'Natalia', 'Cuesta', 0, 1, '2016-2017'),
-(11, 'Emilio', 'Delgado', 1, 1, '2016-2017'),
+(11, 'Emilio', 'Delgado', 0, 1, '2016-2017'),
 (12, 'Belen', 'Lopez', 0, 1, '2016-2017'),
-(13, 'Roberto', 'Alonso', 1, 1, '2016-2017'),
+(13, 'Roberto', 'Alonso', 0, 1, '2016-2017'),
 (14, 'Nieves', 'Cuesta', 0, 3, '2016-2017'),
 (15, 'Vicenta', 'Benito', 0, 3, '2016-2017'),
 (16, 'Alicia', 'Sanz', 0, 2, '2016-2017'),
-(17, 'Pablo', 'Guerra', 1, 2, '2016-2017'),
-(18, 'Jose Miguel', 'Cuesta', 1, 2, '2016-2017'),
+(17, 'Pablo', 'Guerra', 0, 2, '2016-2017'),
+(18, 'Jose Miguel', 'Cuesta', 0, 2, '2016-2017'),
 (19, 'Maria Luisa', 'Benito', 0, 2, '2016-2017'),
 (21, 'Juan', 'Cuesta', 0, 4, '2016-2017'),
 (22, 'Andrés', 'Guerra', 0, 4, '2016-2017'),
@@ -76,18 +76,20 @@ INSERT INTO `candidates` (`id`, `first_name`, `last_name`, `votes`, `category`, 
 
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
-  `name` varchar(40) COLLATE utf8_spanish_ci NOT NULL
+  `name` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `VEfec` int(11) NOT NULL,
+  `VBlan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'Profesorado'),
-(2, 'Alumnado'),
-(3, 'Personal Administración y Servicios'),
-(4, 'Madres, Padres y Tutores');
+INSERT INTO `categories` (`id`, `name`, `VEfec`, `VBlan`) VALUES
+(1, 'Profesorado', 0, 0),
+(2, 'Alumnado', 0, 0),
+(3, 'Personal Administración y Servicios', 0, 0),
+(4, 'Madres, Padres y Tutores', 0, 0);
 
 --
 -- Índices para tablas volcadas

@@ -55,12 +55,27 @@ public class Votes extends HttpServlet {
 								);
 						ps.executeUpdate();
 					}
+					String vote = "VEfec";
+					if(array[0].equals("0"))
+						vote = "VBlan";
+					ps = connect.getConnetion().prepareStatement(
+								"UPDATE categories SET "+vote+" = "+vote+" +1 WHERE id = "+category
+							);
+					ps.executeUpdate();
 				}
 				if(clean != null){
 					statement = "candidates:votes:0:category:"+category;
 					query = new MyQuery(connect, statement);
 					ps = query.preparedStatement(MyQuery.MODIFY);
 					ps.executeUpdate();
+					
+					String[] array = {"VEfec", "VBlan"};
+					for (int i = 0; i < array.length; i++) {
+						statement = "categories:"+array[i]+":0:id:"+category;
+						query = new MyQuery(connect, statement);
+						ps = query.preparedStatement(MyQuery.MODIFY);
+						ps.executeUpdate();
+					}
 				}
 				if(category != null){
 					statement = "candidates:category:"+category;
@@ -99,6 +114,24 @@ public class Votes extends HttpServlet {
 										"<button class='btn btn-success' type='button'"+
 										" data-toggle='modal' data-target='#confirm'>Votar</button>"+
 									"</form>";
+						
+						statement = "categories:id:"+category;
+						query = new MyQuery(connect, statement);
+						ps = query.preparedStatement(MyQuery.SELECT_AND);
+						result = ps.executeQuery();
+						
+						result.next();
+						
+						count += 	"<table class='table table-bordered'>"+
+										"<tr>"+
+											"<td>Votos Efectivos</td>"+
+											"<td>"+result.getInt("VEfec")+"</td>"+
+											"<td>Votos en Blanco</td>"+
+											"<td>"+result.getInt("VBlan")+"</td>"+
+											"<td>Votos Totales</td>"+
+											"<td>"+(result.getInt("VEfec")+result.getInt("VBlan"))+"</td>"+
+										"</tr>"+
+									"</table>";
 					}
 					else
 						votation = "Aún no hay candidatos para esta categoría";
